@@ -1,0 +1,14 @@
+import logging
+from flask_pymongo import pymongo
+from flask import jsonify, request
+con_string = "mongodb+srv://DIVYA:<divyadivya>@cluster0.lbuoiji.mongodb.net/?retryWrites=true&w=majority"
+client = pymongo.MongoClient(con_string)
+db=client.get_database('demodb')
+user_collection = pymongo.collection.Collection(db,'demo')
+print("Mongodb connected successfully")
+def project_api_routes(endpoints):
+    @endpoints.route('/hello',methods=['GET'])
+    def hello():
+        res='hello'
+        print("hello")
+        return res
